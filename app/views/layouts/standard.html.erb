@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      
+      <title>Anuya's Library </title>
+      <%= stylesheet_link_tag "style" %>
+   </head>
+
+   <body id = "library">
+      <div id = "container">
+         
+         <div id = "header">
+            <h1>Welcome to Anuya's Library</h1>
+            <h3>Library powered by Ruby on Rails</h3>
+         </div>
+
+         <div id = "content">
+            <%= yield %>
+         </div>
+
+         <div id = "sidebar"></div>
+         
+      </div>
+   </body>
+   
+</html>
