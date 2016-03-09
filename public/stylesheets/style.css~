@@ -86,9 +86,6 @@ ul#genres > li {
 ul#genres > li:first-child {
     border-left: 1px solid #f00;
 }
-ul#genres > li:hover {
-    background:#ddd;
-}
 
 ul#genres > li a, ul#genres > li a:link, ul#genres > li a:hover, ul#genres > li a:visited, ul#genres > li a:focus {
     text-decoration:none;
