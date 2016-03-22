@@ -4,6 +4,8 @@ class BooksController < ApplicationController
 	layout 'standard'
 	
 	def list
+		flash.now[:notice] = 'Welcome!'
+        flash.now[:alert] = 'My birthday is soon.'
 		@genres=Genre.all
 		@books = Book.all
 	end
