@@ -2,13 +2,30 @@
 
 <p>
    <strong>Author: </strong> <%= @book.author %><br />
-  <!-- <strong>Genre :</strong> <%= @book.genre.name %><br />-->
-   <strong>Genre: </strong> <%= link_to @book.genre.name,:action => 'show_genres', :id => @book.genre.id %><br />
-   <!--<strong>Created Date:</strong> <%= @book.created_at %><br />-->
+  
+   <strong>Genre: </strong> 
+   <%= @book.genre.name%><br />
+   
 </p>
+<!--IMAGE UPLOAD -->
+<p><%= image_tag @book.image.url(:medium) %></p>
 
 <p><%= @book.description %></p>
 
-<hr />
+<h3>Comments</h3>
+<%= render @book.comments %>
+
+
+<h3>Add a comment:</h3>
+<%= render 'comments/form'%>
+
+</hr>
+
+
+
 
 <%= link_to 'Back', {:action => 'list'} %>
+
+
+
+

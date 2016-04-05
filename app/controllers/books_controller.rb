@@ -4,8 +4,6 @@ class BooksController < ApplicationController
 	layout 'standard'
 	
 	def list
-		flash.now[:notice] = 'Welcome!'
-        flash.now[:alert] = 'My birthday is soon.'
 		@genres=Genre.all
 		@books = Book.all
 	end
@@ -19,20 +17,25 @@ class BooksController < ApplicationController
 		@genres=Genre.all
 	end
 
+	def edit
+		@book=Book.find(params[:id])
+		@genres=Genre.all
+	end
+
+
 	def create
 		@book=Book.new(book_params)
+		
 
 		if @book.save
-			redirect_to :action =>'list'
+			redirect_to :action => 'list'
 		else
 			@genres=Genre.all
 			render :action =>'new'
 		end
 	end
-
-	def edit
-		@book=Book.find(params[:id])
-		@genres=Genre.all
+	def book_params
+		params.require(:book).permit(:bookname, :author, :genre_id, :description, :image)
 	end
 
 	def update
@@ -45,6 +48,9 @@ class BooksController < ApplicationController
 			render :action =>'edit'
 		end
 	end
+	def book_param
+		params.require(:book).permit(:bookname, :author, :genre_id, :description, :image)
+	end
 
 	def delete
 		Book.find(params[:id]).destroy
@@ -53,16 +59,5 @@ class BooksController < ApplicationController
 
 	def show_genres
       @genre = Genre.find(params[:id])
-    end
-
-		
-	
-
-	 def book_params
-		params.require(:books).permit(:bookname, :author, :genre_id, :image, :description)
-	end
-
-	def book_param
-		params.require(:book).permit(:bookname, :author, :genre_id, :image, :description)
-	end
+    end	
 end

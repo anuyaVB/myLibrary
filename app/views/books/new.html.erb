@@ -1,20 +1,47 @@
 <h1>Add new book</h1>
 
-<%= form_tag :action => 'create' do %>
-<p><label for = "book_name">Book Name</label>:
+<%= form_for @book, :action => 'create', :html => { multipart: true } do |f|%>
 
-<%= text_field 'books', 'bookname' %></p>
-<p><label for = "book_author">Author</label>:
+<p>
+	<%= f.label :bookname %><br>
+	<%= f.text_field :bookname %>
+</p>
 
-<%= text_field 'books', 'author' %></p>
-<p><label for = "book_genre_id">Genre</label>:
 
-<%= collection_select(:books, :genre_id, @genres, :id, :name, prompt: true) %></p>
-<!--how to put iimage -->
-<p><label for = "book_description">Description</label><br/>
 
-<%= text_area 'books', 'description' %></p>
-<%= submit_tag "Create" %>
+<p>
+	<%= f.label :author %><br>
+	<%= f.text_field :author%>
+</p>
+
+
+
+<p>
+	<%= f.label :book_genre_id %><br>
+	<%= collection_select(:book, :genre_id, @genres, :id, :name, {prompt: true}) %>
+</p>
+
+
+
+<!--IMAGE UPLOAD -->
+<p>
+	<%= f.label :image %> <br>
+	<%= f.file_field :image %>
+</p>
+
+
+
+<p>
+	<%= f.label :description %><br>
+	<%= f.text_area :description %>
+</p>
+
+<%= f.submit "Create" %>
 
 <% end -%>
+
+
 <%= link_to 'Back', {:action => 'list'} %>
+
+
+

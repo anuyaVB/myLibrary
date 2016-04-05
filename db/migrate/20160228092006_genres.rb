@@ -1,7 +1,7 @@
 class Genres < ActiveRecord::Migration
   def self.up
   	create_table :genres do |t|
-  		t.column :name, :string
+  		t.string :name
   end
 
   Genre.create :name =>"Science Fiction"

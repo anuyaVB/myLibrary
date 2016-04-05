@@ -11,16 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228092006) do
+ActiveRecord::Schema.define(version: 20160403151823) do
 
   create_table "books", force: :cascade do |t|
-    t.string   "bookname",    limit: 32, null: false
+    t.string   "bookname"
     t.string   "author"
     t.integer  "genre_id"
-    t.binary   "image"
     t.text     "description"
-    t.datetime "created_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["book_id"], name: "index_comments_on_book_id"
 
   create_table "genres", force: :cascade do |t|
     t.string "name"

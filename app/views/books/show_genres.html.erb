@@ -2,7 +2,11 @@
 
 <ul>
    <% @genre.books.each do |c| %>
-   <li><%= link_to c.bookname, {:action => 'show', :id => c.id} %></li>
+     <%= link_to c.bookname, {:action => 'show', :id => c.id} %>
+   <li><%= image_tag c.image.url(:medium), {:action => 'show', :id => c.id} %></li>
+
    <% end %>
 </ul>
+
+
 <%= link_to 'Back', {:action => 'list'} %>

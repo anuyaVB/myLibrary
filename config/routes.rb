@@ -9,8 +9,12 @@ Rails.application.routes.draw do
    get 'books/delete'
    get 'books/update'
    get 'books/show_genres'
+   
 
-  resources :books
+
+  resources :books do
+    resources :comments
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
