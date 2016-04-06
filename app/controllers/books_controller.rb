@@ -16,6 +16,7 @@ before_action :authenticate_user! , except: [:list, :show]
 
 	def show
 		@book=Book.find(params[:id])
+		session[:user_return_to] = request.url
 	end
 
 	def new
