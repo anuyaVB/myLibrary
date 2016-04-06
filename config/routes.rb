@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
+  
+    
+
+ 
  get 'books/list'
    get 'books/new'
    post 'books/create'

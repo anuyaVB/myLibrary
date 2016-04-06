@@ -5,6 +5,7 @@ class Book < ActiveRecord::Base
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	validates_presence_of :bookname
 	validates_presence_of :author
-
+	belongs_to :user
+	
 	#used a singular genre in the above example, because one Book can belong to a single Genre.
 end

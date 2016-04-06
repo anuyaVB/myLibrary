@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
-	def create
+	
+ #http_basic_authenticate_with name: "admin", password: "admin", only: :destroy
+
+ 
+  def create
     @book = Book.find(params[:book_id])
     @comment = @book.comments.create(comment_params)
     redirect_to book_path(@book)

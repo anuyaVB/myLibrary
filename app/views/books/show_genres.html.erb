@@ -3,7 +3,7 @@
 <ul>
    <% @genre.books.each do |c| %>
      <%= link_to c.bookname, {:action => 'show', :id => c.id} %>
-   <li><%= image_tag c.image.url(:medium), {:action => 'show', :id => c.id} %></li>
+   <li><%= link_to image_tag c.image.url(:medium), {:action => 'show', :id => c.id} %></li>
 
    <% end %>
 </ul>

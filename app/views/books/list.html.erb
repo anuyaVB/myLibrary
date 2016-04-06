@@ -1,3 +1,10 @@
+<% if current_user.present? %>
+   <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+   <%= link_to "Sign In", new_user_session_path %>
+<% end %>
+
+<%= link_to "Sign Up", new_user_registration_path %>
 
 <% if @books.blank? %>
    <p>There are no books currently in the system.</p>
@@ -10,7 +17,7 @@
       <%= link_to "#{c.name} (#{c.books.count})", books_show_genres_path(:id => c.id) %>
       </li>
             <% end %>
-
+<p>User</p>
          </ul>
 
          <ul id = "books">
@@ -18,7 +25,8 @@
       <li>
          <p style="font-size=20px;">
          <%= link_to c.bookname, {:action => 'show', :id => c.id} %></p>
-   	   <%= link_to image_tag c.image.url(:thumb), {:action => 'show', :id => c.id} %>
+   	   <%= link_to image_tag(c.image.url(:thumb), {:action => 'show', :id => c.id}),{:action => 'show', :id => c.id} %>
+         
    
    
       </li>

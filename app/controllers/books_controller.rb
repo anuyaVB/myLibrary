@@ -1,9 +1,15 @@
 class BooksController < ApplicationController
+	
+#http_basic_authenticate_with name: "admin", password: "admin", except: [:list, :show]
+before_action :authenticate_user! , except: [:list, :show]
+
+
 	def index
 	end
 	layout 'standard'
 	
 	def list
+		@user=User.new
 		@genres=Genre.all
 		@books = Book.all
 	end
