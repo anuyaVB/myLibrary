@@ -1,5 +1,7 @@
 <% if current_user.present? %>
    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+   
+   <%= link_to "Edit Profile", '/users/edit' %>
 <% else %>
    <%= link_to "Sign In", new_user_session_path %>
    <%= link_to "Sign Up", new_user_registration_path %>
@@ -26,7 +28,7 @@
       <li>
          <p style="font-size=20px;">
          <%= link_to c.bookname, {:action => 'show', :id => c.id} %></p>
-   	   <%= link_to image_tag(c.image.url(:thumb), {:action => 'show', :id => c.id}),{:action => 'show', :id => c.id} %>
+         <%= link_to image_tag(c.image.url(:thumb), {:action => 'show', :id => c.id}),{:action => 'show', :id => c.id} %>
          
    
    
